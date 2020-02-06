@@ -4,8 +4,18 @@
 """
 
 
-def custom_range(*args, **kwargs):
-    pass
+def custom_range(_min=0, _max=None, step=1):
+    lst = []
+    if _min and _max is None:
+        _max = _min
+        _min = 0
+        while _min < _max:
+            lst.append(_min)
+            _min += step
+    while _min < _max:
+        lst.append(_min)
+        _min += step
+    return lst
 
 
 """
@@ -16,8 +26,10 @@ accum("cwAt") -> "C-Ww-Aaa-Tttt"
 """
 
 
-def accum(*args, **kwargs):
-    pass
+def accum(str):
+    res = [elem.capitalize() for elem in str.lower()]
+    res2 = '-'.join([elem + elem.lower() * res.index(elem) for elem in res])
+    return res2
 
 
 """
@@ -38,8 +50,13 @@ there are 10 matches in the championship
 """
 
 
-def points(*args, **kwargs):
-    pass
+def points(lst):
+    cnt = 0
+    for elem in lst:
+        cnt += 3 if int(elem[0]) > int(elem[2]) else 0
+        if int(elem[0]) == int(elem[2]):
+            cnt += 1
+    return cnt
 
 
 """
@@ -47,10 +64,15 @@ def points(*args, **kwargs):
 определяет в списке наиболее встречаемое значение.
 Вернуть значение и количество повторений.
 """
+"""
+return sorted(list({elem: lst.count(elem) for elem in lst}.items()), key = lambda x: x[1])[-1]
+думал выпендреться в одну строку, но PEP:(
+"""
 
 
-def max_number_count(*args, **kwargs):
-    pass
+def max_number_count(lst):
+    _items = list({elem: lst.count(elem) for elem in lst}.items())
+    return sorted(_items, key=lambda x: x[1])[-1]
 
 
 if __name__ == '__main__':
