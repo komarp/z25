@@ -27,9 +27,8 @@ accum("cwAt") -> "C-Ww-Aaa-Tttt"
 
 
 def accum(str):
-    res = [elem.capitalize() for elem in str.lower()]
-    res2 = '-'.join([elem + elem.lower() * res.index(elem) for elem in res])
-    return res2
+    res = '-'.join([(elem + elem.lower() * str.index(elem)).capitalize() for elem in str])
+    return res
 
 
 """
@@ -71,8 +70,10 @@ return sorted(list({elem: lst.count(elem) for elem in lst}.items()), key = lambd
 
 
 def max_number_count(lst):
-    _items = list({elem: lst.count(elem) for elem in lst}.items())
-    return sorted(_items, key=lambda x: x[1])[-1]
+    _dict = {}
+    for elem in lst:
+       _dict[elem] = _dict.get(elem, 0) + 1
+    return sorted(_dict.items(), key=lambda x: x[1])[-1]
 
 
 if __name__ == '__main__':
