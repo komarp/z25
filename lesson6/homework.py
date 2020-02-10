@@ -27,7 +27,10 @@ print_given()
 
 
 def print_given(*args, **kwargs):
-    pass
+    for elem in args:
+        print(elem, type(elem))
+    for elem in kwargs:
+        print(elem, kwargs[elem], type(kwargs[elem]))
 
 
 """
@@ -51,17 +54,17 @@ Sample Output:
 [8, 5, 1, 1, 13, 3, 2, 0]
 
 Использовать
+"""
 number_names = {
         0: "zero", 1: "one", 2: "two", 3: "three", 4: "four", 5: "five",
         6: "six", 7: "seven", 8: "eight", 9: "nine",
         10: "ten", 11: "eleven", 12: "twelve",
         13: "thirteen", 14: "fourteen", 15: "fifteen", 16: "sixteen",
         17: "seventeen",  18: "eighteen", 19: "nineteen"}
-"""
 
 
-def sort_by_abc(*args, **kwargs):
-    pass
+def sort_by_abc(*args):
+    return sorted(list(args), key=lambda x: number_names[x])
 
 
 """
@@ -99,8 +102,18 @@ print(h(2, 3, 9))
 """
 
 
-def composition(*args, **kwargs):
-    pass
+# сделал, но не уверен, что понял до конца
+def composition(f, g):
+    def h(*args, **kwargs):
+        return f(g(*args, **kwargs))
+    return h
+
+
+h = composition(sum, lambda x, y, z: (x**2, y**3, z**4))
+
+h1 = composition(lambda x: x, composition(lambda x: x**2, lambda x: x + 1))
+
+h2 = composition(lambda x: x**2, lambda x: x + 1)
 
 
 """
@@ -124,8 +137,21 @@ div(2, 4, show=True)
 """
 
 
-def flip(*args, **kwargs):
-    pass
+def flip(func):
+    def decorator(*args, **kwargs):
+        if kwargs:
+            print(func(*list(args)[::-1]))
+        else:
+            return func(*list(args)[::-1], kwargs)
+    return decorator
+
+
+@flip
+def div(x, y, show=False):
+    res = x / y
+    if show:
+        print(res)
+    return res
 
 
 """
@@ -152,8 +178,21 @@ identity(57)
 """
 
 
-def introduce_on_debug(*args, **kwargs):
-    pass
+def introduce_on_debug(debug):
+    def inner(func):
+        def decorator(*args, **kwargs):
+            if debug:
+                print(func.__name__)
+                return func(*args, **kwargs)
+            else:
+                return func(*args, **kwargs)
+        return decorator
+    return inner
+
+
+@introduce_on_debug(debug=True)
+def identity(x):
+    return x
 
 
 """
@@ -162,9 +201,21 @@ Ex6
 """
 
 
-def timer(*args, **kwargs):
-    pass
+def timer(func):
+    def decorator(*args, **kwargs):
+        start_time = time.time()
+        func(*args, **kwargs)
+        return f'Seconds > {time.time() - start_time}'
+    return decorator
 
 
 if __name__ == "__main__":
     """Тут напиши тесты для задача"""
+    assert sort_by_abc(0, 1, 1, 2, 3, 5, 8, 13) == [8, 5, 1, 1, 13, 3, 2, 0]
+    print('sort_by_abc - OK')
+    assert div(2, 4) == 2.0
+    print('@flip - OK')
+    assert h(2, 3, 9) == 6592
+    assert h1(5) == 36
+    assert h2(5) == 36
+    print('composition - OK')
