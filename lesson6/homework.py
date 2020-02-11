@@ -139,10 +139,7 @@ div(2, 4, show=True)
 
 def flip(func):
     def decorator(*args, **kwargs):
-        if kwargs:
-            print(func(*list(args)[::-1]))
-        else:
-            return func(*list(args)[::-1], kwargs)
+        return func(*list(args)[::-1], **kwargs)
     return decorator
 
 
@@ -150,8 +147,10 @@ def flip(func):
 def div(x, y, show=False):
     res = x / y
     if show:
-        print(res)
+        print(div.__name__)
     return res
+
+
 
 
 """
