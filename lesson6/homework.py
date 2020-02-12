@@ -64,7 +64,7 @@ number_names = {
 
 
 def sort_by_abc(*args):
-    return sorted(list(args), key=lambda x: number_names[x])
+    return sorted(args, key=lambda x: number_names[x])
 
 
 """
