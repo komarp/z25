@@ -4,7 +4,6 @@ import time
 
 """1. Написать кэширующий декоратор,
 который принимает время (в секундах, сколько необюходимо хранить результат)
-
 @cache(60)  # значит что результат функции foo будет хранится 60 секунд
 def foo():
     pass
@@ -21,11 +20,12 @@ def cache(seconds):
             if not res:
                 res = func(*args, **kwargs)
                 cache._cache[cache_key] = res, time.time()
-            if time.time()- cache._cache[cache_key][1] >= seconds:
+            if time.time() - cache._cache[cache_key][1] >= seconds:
                 delattr(cache._cache, cache_key)
             return res
         return decorator
     return inner
+
 
 """
 2.
@@ -55,11 +55,13 @@ def foo1():
 def counter(str):
     def inner(func):
         def decorator(*args, **kwargs):
-            if not hasattr(counter, '_cnt'):
-                counter._cnt = 1
+            if not hasattr(counter, 'counter'):
+                counter.counter = {}
+            if not counter.counter.get(func):
+                counter.counter[func] = 1
             else:
-                counter._cnt += 1
-            print(f'{str} - {counter._cnt}')
+                counter.counter[func] += 1
+            print(f'{str} - {counter.counter[func]}')
             return func(*args, **kwargs)
         return decorator
     return inner
@@ -87,9 +89,8 @@ the printing 10-13-2018 and typesetting industry.
 
 
 def get_datetimes(txt):
-    pattern = re.compile('\d{2}-\d{2}-\d{4}')
+    pattern = re.compile(r'[0-3]{1}[0-9]{1}-[0-3]{1}[0-9]{1}-\d{4}')
     return pattern.findall(txt)
-
 
 
 """
@@ -140,7 +141,7 @@ s = """64 bytes from 216.58.215.110: icmp_seq=0 ttl=54 time=30.391 ms
 def get_ping_info(text):
     lst = re.compile(r'\b\d{1}\b').findall(text)
     lst2 = re.compile(r'\d{2}.\d{3}[^.:]').findall(text)
-    return tuple(zip(list(map(int,lst)), list(map(float,lst2))))
+    return tuple(zip(list(map(int, lst)), list(map(float, lst2))))
 
 
 if __name__ == "__main__":
@@ -151,6 +152,6 @@ if __name__ == "__main__":
     print('get_datetimes - OK')
     assert get_words(text2, code='vowels') == ['Ipsum', 'is']
     assert get_words(text2, code='consonants') == ['Lorem', 'simply']
-    assert get_words(text2) =='Lorem Ipsum is simply'
+    assert get_words(text2) == 'Lorem Ipsum is simply'
     print('get_words - OK')
     assert get_ping_info(s) == ((0, 30.391), (1, 30.667), (2, 33.201), (3, 30.14), (4, 31.822))
