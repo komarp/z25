@@ -1,46 +1,156 @@
-"""
-Написать !консольную! программу, которая на вход получает имя входного файла,
-имя выходного и решает определенную задачу.
-Задача программы:
-1) По расширению файлов определить какой тип данных в них.
- - <file_name>.json - в файле лежит json
- - <file_name>.csv - лежит csv
- - <file_name>.xml - лежит xml
-  - <file_name>.bin - лежит объект, упакованный при помощи pickle
-2) Перегнать данные из одного файла в другой соблюдая тип данных
-Пример:
-python homework6.py data.json data.csv
-из json который лежит в data.json сделать csv и положить в файл data.csv
-PS: для проверки существования файла можно использовать os.path.exists(<path>)
-PSS: для получения аргументов командной строки:
+import json
+import csv
+import pickle
+import xml.etree.ElementTree as etree
 import sys
-sys.argv
-3) Второй файл в аргументе может быть не указан.
-python homework6.py data.json
-Если второй аргумент не указан, то данные из файла data.json вывести на экран в
-виде питоновского объекта.
-PS: глубина вложенности данных - 1
-т.е. для xml не может быть вложености глубже тегов внутри тега <item>
-<root>
-   <item>
-      <author>Gambardella, Matthew</author>
-      <title>XML Developer's Guide</title>
-      <genre>Computer</genre>
-      <price>44.95</price>
-      <publish_date>2000-10-01</publish_date>
-      <description>An in-depth look at creating applications
-      with XML.</description>
-   </item>
-   <item>
-      <author>Ralls, Kim</author>
-      <title>Midnight Rain</title>
-      <genre>Fantasy</genre>
-      <price>5.95</price>
-      <publish_date>2000-12-16</publish_date>
-      <description>A former architect battles corporate zombies,
-      an evil sorceress, and her own childhood to become queen
-      of the world.</description>
-   </item>
-</root>
-для json не могут быть объекты внутри объектов
-"""
+
+ ###################################################################
+# parse_xml_function
+
+
+def parse_xml(file_r):
+    tree = etree.parse(file_r)
+    root = tree.getroot()
+    result = {}
+    for child in root:
+        result[child.tag] = child.text
+    return result
+
+
+# Json_reader
+def json_reader(file_r):
+    with open(file_r) as file:
+        content = json.load(file)
+        return content
+
+
+# CSV writer
+def csv_writer(file_w, result):
+    with open(file_w, 'w') as filew:
+        fieldnames = list(result[0].keys())
+        writer = csv.DictWriter(filew, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(result)
+
+
+# pickle writer
+def pickle_writer(file_w, result):
+    with open(file_w, 'wb') as filew:
+        pickle.dump(result, filew)
+
+
+# pickle reader
+def pickle_reader(file_r):
+    with open(file_r, 'rb') as filer:
+        content = pickle.load(filer)
+        return content
+
+
+ #################################################################
+def data_format(file_r=sys.argv[1], file_w=sys.argv[2]):
+    if file_w == 'print':
+        with open(file_r) as filer:
+            print(filer.read())
+            return None
+    # XML >> JSON
+    if file_r.endswith('.xml') and file_w.endswith('.json'):
+        result = parse_xml(file_r)
+        with open(file_w, 'w') as filew:
+            json.dump(result, filew, indent=4)
+    # XML >> CSV
+    elif file_r.endswith('.xml') and file_w.endswith('.csv'):
+        result = parse_xml(file_r)
+        result = [result]
+        with open('_data_.csv', 'w') as filew:
+            fieldnames = list(result[0].keys())
+            writer = csv.DictWriter(filew, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(result)
+    # XML >> pickle
+    elif file_r.endswith('.xml') and file_w.endswith('.txt'):
+        result = parse_xml(file_r)
+        with open('_data_.txt', 'wb') as filew:
+            pickle.dump(result, filew)
+    # JSON >> XML
+    if file_r.endswith('.json') and file_w.endswith('.xml'):
+        result = json_reader(file_r)
+        with open(file_w, 'w') as filew:
+            _str = """
+            <user>
+                <name>{name}</name>
+                <surname>{surname}</surname>
+                <age>{age}</age>
+                <sex>{sex}</sex>
+                <education>{education}</education>
+            </user>
+            """
+            new_str = _str.format(**result)
+            for line in new_str:
+                filew.write(line.lstrip())
+    # JSON >> CSV
+    elif file_r.endswith('.json') and file_w.endswith('.csv'):
+        result = [json_reader(file_r)]
+        csv_writer(file_w, result)
+    # JSON >> pickle
+    elif file_r.endswith('.json') and file_w.endswith('.txt'):
+        result = json_reader(file_r)
+        pickle_writer(file_w, result)
+    # CSV >> JSON
+    if file_r.endswith('.csv') and file_w.endswith('.json'):
+        with open(file_r) as filer:
+            reader = csv.DictReader(filer)
+            with open(file_w, 'w') as filew:
+                for elem in reader:
+                    json.dump(elem, filew, indent=4)
+    # CSV >> XML
+    elif file_r.endswith('.csv') and file_w.endswith('.xml'):
+        with open(file_r) as filer:
+            reader = csv.DictReader(filer)
+            reader = list(reader)
+            with open(file_w, 'w') as filew:
+                _str = """
+            <user>
+                <name>{name}</name>
+                <surname>{surname}</surname>
+                <age>{age}</age>
+                <sex>{sex}</sex>
+                <education>{education}</education>
+            </user>
+            """
+                for line in _str.format(**reader[0]):
+                    filew.write(line.lstrip())
+    # CSV >> pickle
+    elif file_r.endswith('.csv') and file_w.endswith('.txt'):
+        with open(file_r) as filer:
+            reader = csv.DictReader(filer)
+            reader = list(reader)
+            pickle_writer(file_w, reader[0])
+    # pickle >> json
+    if file_r.endswith('.txt') and file_w.endswith('.json'):
+        result = pickle_reader(file_r)
+        with open(file_w, 'w') as filew:
+            json.dump(result, filew, indent=4)
+    # pickle >> CSV
+    elif file_r.endswith('.txt') and file_w.endswith('.csv'):
+        result = pickle_reader(file_r)
+        result = [result]
+        csv_writer(file_w, result)
+    # pickle >> XML
+    elif file_r.endswith('.txt') and file_w.endswith('.xml'):
+        result = pickle_reader(file_r)
+        with open(file_w, 'w') as filew:
+            _str = """
+        <user>
+            <name>{name}</name>
+            <surname>{surname}</surname>
+            <age>{age}</age>
+            <sex>{sex}</sex>
+            <education>{education}</education>
+        </user>
+        """
+            for line in _str.format(**result):
+                filew.write(line.lstrip())
+
+
+data_format()
+
