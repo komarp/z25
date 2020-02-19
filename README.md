@@ -111,4 +111,16 @@ https://gist.github.com/tima-akulich/0a4eb46ecb37ef7006ded486c1011ba9#file-lesso
 - https://pythonworld.ru/moduli/modul-json.html
 
 ### Homework 8 (lesson8)
+<<<<<<< HEAD
 Задание описаны в файле в папке lesson8/homework.py.
+=======
+Задание описаны в файле в папке lesson8/homework.py.
+
+# 7. Lesson 9 / 18.02.2020
+### Docs
+- https://en.wikipedia.org/wiki/Object-oriented_programming
+- https://docs.python.org/3/tutorial/classes.html
+
+### Homework 9 (lesson9)
+Задание описаны в файле в папке lesson9/homework.py.
+>>>>>>> 8bb9d7d0f9909b6d66c564ee8ae6cb9206111569
