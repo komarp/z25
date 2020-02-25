@@ -8,7 +8,23 @@ import time
 
 
 def max_number(_list):
-    return ''.join(sorted(list(map(str, _list)), key=lambda x: x[0])[::-1])
+    lst = list(map(str, _list))
+    dct = {}
+    _lst = []
+    lst2 = []
+    for elem in lst:
+        num = dct.get(elem[0])
+        if not num:
+            dct[elem[0]] = dct.get(elem[0], [elem])
+        else:
+            dct[elem[0]].append(elem)
+    for lst in dct.values():
+        a = sorted(lst, key=lambda x: len(x) >= 2 and int(x[0]) < int(x[1]))[::-1]
+        _lst.append(a)
+    for elem in _lst:
+        a = ''.join(elem)
+        lst2.append(a)
+    return ''.join(sorted(lst2, key=lambda x: x[0], reverse=True))
 
 
 """
@@ -61,7 +77,7 @@ class Timer:
 
 
 if __name__ == '__main__':
-    assert max_number([234, 123, 98]) == 98234123
+    assert max_number([234, 123, 98]) == '98234123'
     assert max_number([1, 2, 3, 4]) == 4321
     assert max_number([]) is None
     assert max_number([98, 9, 34]) == 99834
