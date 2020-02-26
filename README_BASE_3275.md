@@ -112,7 +112,6 @@ https://gist.github.com/tima-akulich/0a4eb46ecb37ef7006ded486c1011ba9#file-lesso
 
 ### Homework 8 (lesson8)
 Задание описаны в файле в папке lesson8/homework.py.
-Задание описаны в файле в папке lesson8/homework.py.
 
 # 7. Lesson 9 / 18.02.2020
 ### Docs
@@ -126,7 +125,6 @@ https://gist.github.com/tima-akulich/092da9b52617f96c1e3a5f8a8538f77f
 Задание описаны в файле в папке lesson9/homework.py.
 
 
-
 # 8. Lesson 10 / 21.02.2020
 ### Docs
 - https://habr.com/ru/post/186608/
@@ -137,18 +135,3 @@ https://gist.github.com/tima-akulich/ab861454c586b869ab1ca1f990d803f0
 
 ### Homework 10 (lesson10)
 Задание описаны в файле в папке lesson10/homework.py.
-
-
-# 9. Lesson 11 / 25.02.2020
-### Docs
-- https://habr.com/ru/post/145835/
-- https://habr.com/ru/post/122082/
-- https://en.wikipedia.org/wiki/Software_testing - про тестирование
-- https://docs.python.org/3/library/unittest.html - юнитесты
-- https://coverage.readthedocs.io/en/v4.5.x/cmd.html - покрытие
-
-### Practice
-https://gist.github.com/tima-akulich/a661a876b4391430b6b3560934c99824
-
-### Homework 11
-Задание описаны в файле в папке lesson11/homework.py. + покрыть тестами tests.py

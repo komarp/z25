@@ -112,7 +112,6 @@ https://gist.github.com/tima-akulich/0a4eb46ecb37ef7006ded486c1011ba9#file-lesso
 
 ### Homework 8 (lesson8)
 Задание описаны в файле в папке lesson8/homework.py.
-Задание описаны в файле в папке lesson8/homework.py.
 
 # 7. Lesson 9 / 18.02.2020
 ### Docs
@@ -124,7 +123,6 @@ https://gist.github.com/tima-akulich/092da9b52617f96c1e3a5f8a8538f77f
 
 ### Homework 9 (lesson9)
 Задание описаны в файле в папке lesson9/homework.py.
-
 
 
 # 8. Lesson 10 / 21.02.2020
