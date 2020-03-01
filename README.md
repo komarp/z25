@@ -88,3 +88,83 @@ https://gist.github.com/tima-akulich/288ce370b25ae2f6f06f4f62ac9e4966
 ### Homework 6 (lesson6)
 Задание описаны в файле в папке lesson6.
 Обратите внимание что вам так же необходимо написать тесты для задач.
+
+# 5. Lesson 7 / 11.02.2020
+### Docs
+* regexp - https://docs.python.org/3/library/re.html
+
+### Practice
+https://gist.github.com/tima-akulich/0a4eb46ecb37ef7006ded486c1011ba9#file-lesson_5-ipynb
+
+### Homework 7 (lesson7)
+Задание описаны в файле в папке lesson7.
+Обратите внимание что вам так же необходимо написать тесты для задач.
+
+
+# 6. Lesson 8 / 14.02.2020
+### Docs
+- https://pythonworld.ru/tipy-dannyx-v-python/fajly-rabota-s-fajlami.html
+- https://pythonworld.ru/tipy-dannyx-v-python/stroki-funkcii-i-metody-strok.html
+- https://pythonworld.ru/moduli/modul-pickle.html - pickle
+- https://python-scripts.com/import-csv-python - csv
+- https://gitjournal.tech/python_xml/ - xml
+- https://pythonworld.ru/moduli/modul-json.html
+
+### Homework 8 (lesson8)
+Задание описаны в файле в папке lesson8/homework.py.
+
+# 7. Lesson 9 / 18.02.2020
+### Docs
+- https://en.wikipedia.org/wiki/Object-oriented_programming
+- https://docs.python.org/3/tutorial/classes.html
+
+### Practice
+https://gist.github.com/tima-akulich/092da9b52617f96c1e3a5f8a8538f77f
+
+### Homework 9 (lesson9)
+Задание описаны в файле в папке lesson9/homework.py.
+
+
+# 8. Lesson 10 / 21.02.2020
+### Docs
+- https://habr.com/ru/post/186608/
+- https://pythonworld.ru/osnovy/with-as-menedzhery-konteksta.html
+
+### Practice
+https://gist.github.com/tima-akulich/ab861454c586b869ab1ca1f990d803f0
+
+### Homework 10 (lesson10)
+Задание описаны в файле в папке lesson10/homework.py.
+
+
+# 9. Lesson 11 / 25.02.2020
+### Docs
+- https://habr.com/ru/post/145835/
+- https://habr.com/ru/post/122082/
+- https://en.wikipedia.org/wiki/Software_testing - про тестирование
+- https://docs.python.org/3/library/unittest.html - юнитесты
+- https://coverage.readthedocs.io/en/v4.5.x/cmd.html - покрытие
+
+### Practice
+https://gist.github.com/tima-akulich/d18922204a49c8c74103938a93a2b61a
+
+### Homework 11
+Задание описаны в файле в папке lesson11/homework.py. + покрыть тестами tests.py
+
+# 10. Lesson 12 28/02/2020
+### Documentation
+- https://www.tutorialspoint.com/sql/sql-quick-guide.htm - гайд по sql
+- https://www.postgresqltutorial.com/postgresql-data-types/
+- https://docs.google.com/presentation/d/1zbuwgSwQZZYJ-uChaSbtla7Izyr1uJNSgZVQ-eNFyWI/edit?usp=sharing - презентация
+### homework
+```
+1.
+Представим что мы создаем приложение для прохождения каких-либо тестов.
+
+Описать схему базы данных для этого приложения (таблицы и связи)
+
+Придумать таблицы. Придумать поля у каждой таблицы. 
+Пользователь может отвечать на вопрос один раз. 
+Правильный вариант ответа только один.
+
+```

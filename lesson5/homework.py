@@ -31,8 +31,8 @@ def accum(string):
     return '-'.join(_list)
 
 
-def accum(s):
-    return '-'.join([(sym * i).title() for i, sym in enumerate(s, 1)])
+# def accum(s):
+#     return '-'.join([(sym * i).title() for i, sym in enumerate(s, 1)])
 
 
 """
