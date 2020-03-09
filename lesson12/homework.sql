@@ -101,3 +101,7 @@ VALUES ('Лох чилийский', false, 1),
        ('Единорог', true, 7);
 
 
+SELECT tests.text as test, questions.text as question FROM tests_questions
+LEFT JOIN tests ON tests_questions.test_id = tests.id
+LEFT JOIN questions ON tests_questions.question_id = questions.id
+;

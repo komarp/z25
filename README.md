@@ -168,3 +168,11 @@ https://gist.github.com/tima-akulich/d18922204a49c8c74103938a93a2b61a
 Правильный вариант ответа только один.
 
 ```
+
+# 11. Lesson 13 06/03/2020
+### Documentation
+- https://www.psycopg.org/docs/ - дока по библиотеке
+- https://www.psycopg.org/docs/usage.html - quickstart
+
+### homework
+Находится в lesson13/homework.py
