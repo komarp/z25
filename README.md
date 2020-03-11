@@ -176,3 +176,13 @@ https://gist.github.com/tima-akulich/d18922204a49c8c74103938a93a2b61a
 
 ### homework
 Находится в lesson13/homework.py
+
+
+# 12. Lesson 14 10/03/2020
+### Documentation
+- https://docs.sqlalchemy.org/en/13/orm/query.html
+- https://docs.google.com/presentation/d/1zbuwgSwQZZYJ-uChaSbtla7Izyr1uJNSgZVQ-eNFyWI/edit?usp=sharing - презентация
+
+
+### homework
+Находится в lesson14/homework.py
