@@ -186,3 +186,15 @@ https://gist.github.com/tima-akulich/d18922204a49c8c74103938a93a2b61a
 
 ### homework
 Находится в lesson14/homework.py
+
+# 13. Lesson 15 13/03/2020
+### Documentation
+- https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
+- https://en.wikipedia.org/wiki/List_of_HTTP_header_fields
+- https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
+- туториал по html https://www.w3schools.com/html/
+- туториал по css https://www.w3schools.com/css/
+- туториал по js https://www.w3schools.com/js/
+
+### homework
+Находится в lesson15/homework

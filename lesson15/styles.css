@@ -1,0 +1,17 @@
+ h1,h3 {
+    color: #aaeeff;
+}
+.red-font {
+    color: red;
+}
+.font50 {
+    font-size: 50px;
+    color: blue;
+}
+#myP {
+    color: yellow;
+}
+
+td {
+    border: 1px solid black;
+}

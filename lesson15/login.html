@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>Login</title>
+<link href="styles.css" rel="stylesheet">
+<style>
+    .js-text {
+        font-size: 20px;
+    }
+    .red {
+        color: red;
+    }
+    .blue {
+        color: blue;
+    }
+    .green {
+        color: green;
+    }
+</style>
+</head>
+<h1 id="myh1"></h1>
+<p class="js-text">Text</p>
+<form method="post">
+    <input id="username" type="text" placeholder="Username..." name="username"/>
+    <input id="password" type="password" placeholder="Password..." name="password">
+    <input type="datetime-local">
+    <input id="color" type="color">
+    <input type="hidden">
+    <br>
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <br>
+    <input type="radio" name="myRadio">
+    <input type="radio" name="myRadio">
+    <input type="radio" name="myRadio">
+    <input type="radio" name="myRadio">
+    <br>
+    <input type="range">
+    <br>
+    <input type="button" value="GET DATA" onclick="getData()">
+    <input type="submit" value="SUBMIT">
+    <input type="file" name="file">
+    <hr>
+    <table border="1">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+    </table>
+</form>
+<button onclick="lock()">LOCK!</button>
+
+<script src="scripts.js"></script>
+</body>
+</html>
