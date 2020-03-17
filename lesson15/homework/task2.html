@@ -3,6 +3,12 @@
     <meta charset="UTF-8">
     <title>Task 2</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        TD, TH {
+    text-align: center;
+    padding: 3px;
+   }
+    </style>
 </head>
 <body>
 <a href="task1.html">Задача 1</a>
@@ -14,6 +20,31 @@
 <hr/>
 <div>
     РЕШЕНИЕ ТУТ
+    <table border="1" cellpadding="7px" width="430px">
+        <caption>Добыча драгоценных камней</caption>
+        <tr>
+            <th></th>
+            <th>2010</th>
+            <th>2012</th>
+            <th>2014</th>
+        </tr>
+        <tr>
+            <td>Сапфиры</td>
+            <td rowspan="2">1483</td>
+            <td>4532</td>
+            <td>6743</td>
+        </tr>
+        <tr>
+            <td>Рубины</td>
+            <td>3835</td>
+            <td>7482</td>
+        </tr>
+        <tr>
+            <td>Алмазы</td>
+            <td>683</td>
+            <td colspan="2">238</td>
+        </tr>
+    </table>
 </div>
 </body>
 </html>
